@@ -10,6 +10,8 @@ dat.f <- mutate(dat.f, weekday = weekdays(dat.f$Date))
 dat.f <- mutate(dat.f, date.time = as.POSIXct(paste(dat.f$Date, dat.f$Time), 
                                               format="%Y-%m-%d %H:%M:%S"))
 
+# Set device and paramters
+png(file = "plot4.png", width = 480, height = 480)
 par(mfrow = c(2,2), mar = c(4, 4, 1, 1), oma = c(1, 1, 1, 1))
 
 # plot graph 1
@@ -40,6 +42,4 @@ lines(dat.f$date.time, dat.f$Global_reactive_power)
 ylbl <- c(0, 0.1, 0.2, 0.3, 0.4, 0.5)
 axis(2,at=ylbl, label=ylbl)
 
-
-dev.copy(png, file = "plot4.png", width = 480, height = 480)
 dev.off()
